@@ -1,0 +1,34 @@
+import React, { useState } from 'react'
+
+export default function TextForm() {
+  const handleUpClick = () => {
+    console.log('UpperCase is clicked');
+    setText(Text.toUpperCase());
+  }
+  const handleOnChange = (e) => {
+    console.log('HandleOnChange')
+    setText(e.target.value)
+  }
+  const handleLcClick = () => {
+    setText(Text.toLowerCase())
+  }
+  const [Text, setText] = useState('Enter Text here')
+  return (
+    <>
+    <div>
+       <div className="mb-3">
+        <label htmlFor="exampleFormControlTextarea1" className="form-label"></label>
+        <textarea className="form-control" value={Text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+        Convert To Uppercase
+      </button>
+      <button className="btn btn-success mx-2" onClick={handleLcClick}>Convert to Lowercase</button>
+  </div>
+  <div className="container my-3">
+    <h1>Text Summary</h1>
+    <p>The sentence contain {Text.length} characters and {Text.split(" ").length} words .</p>
+  </div>
+</>
+  )
+}
